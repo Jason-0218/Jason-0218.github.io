@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: solid 10px #66ba66;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id='canvas' width=700 height=500></canvas>
+    <script>
+        canvas = document.querySelector('canvas');
+        ctx = canvas.getContext('2d');
+
+        //
+        ctx.moveTo(100, 200);
+        ctx.lineTo(300, 200);
+        ctx.lineTo(300, 300);
+
+        //
+        // lineCap: butt || round || square
+        // lineJoin: bevel || round || miter
+
+        // show image: bevel vs miter
+        ctx.lineWidth = 50;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'miter';
+        ctx.stroke();
+    </script>
+
+</body>
+
+</html>
