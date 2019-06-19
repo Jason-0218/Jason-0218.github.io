@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+    <canvas id="canvas" width="500" height="500">
+        Your browser does not support the HTML5 canvas tag.</canvas>
+
+    <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+
+        var imageObj = new Image();
+        imageObj.src = 'pic.jpg';
+
+        imageObj.onload = function() {
+            ctx.drawImage(imageObj, 0, 0, 200, 120);
+
+            var imageData = ctx.getImageData(0, 0, 500, 500);
+            data = imageData.data;
+            console.log('imageData object:', imageData);
+            console.log('data:', data);
+            console.log('data length:', data.length);
+            /* 700*500*4 = 1400000 */
+            /* data is a one-dimensional array containing the data in the RGBA order for each pixel, with integer values between 0 and 255, i.e. red, green, blue, alpha */
+
+            for (var i = 0; i < data.length; i += 4) {
+                r = data[i];
+                g = data[i + 1];
+                b = data[i + 2];
+                // common formula in photoshop or gimp
+                // var gray = 0.3 * r + 0.59 * g + 0.11 * b;
+
+                // or quick and dirty way
+                var gray = (r + g + b) / 3;
+
+                //red
+//                data[i] = gray;
+                //green
+                data[i + 1] = 100;
+                //blue
+//                data[i + 2] = gray;
+            }
+
+            ctx.putImageData(imageData, 0, 250);
+        }
+    </script>
+</body></html>
+
+

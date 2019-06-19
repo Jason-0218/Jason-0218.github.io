@@ -1,0 +1,24 @@
+2D breakout features:
+add background
+ball bounce with sound
+use key to move paddle and bounce the ball
+use mouse to move paddle and bounce the ball
+set init state of ball that the ball is on the paddle when game begin
+when click, the ball moving from paddle to top
+show 'lives' at top of canvas
+bricks
+break bricks
+show 'scores' at top of canvas
+code levels and show 'levels' at top of canvas
+Show 'game over', stop game and 'restart' button in canvas
+Click 'restart' button to start game from level 1
+Show 'Win' on canvas when completes all levels
+
+More features:
+add different type of sounds
+code level maps (2 levels)
+flash when hit the bricks
+bounce ball with different direction when hitting the paddle
+sound on/sound off button
+add awards, such as more balls, more powerful balls, longer paddles
+refactoring code such as how to managing levels properly

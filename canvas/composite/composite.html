@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<link rel="stylesheet" href="../main.css">
+</head>
+
+<body>
+
+	<canvas width=700 height=500></canvas>
+	<script>
+		canvas = document.querySelector('canvas');
+		ctx = canvas.getContext('2d');
+
+		ctx.globalAlpha = 0.2;
+
+		// destination
+        ctx.fillRect(0,0,50,50);
+		ctx.arc(200, 150, 150, 0, Math.PI * 2, false);
+		ctx.fillStyle = 'red';
+		ctx.fill();
+
+		//
+		ctx.globalCompositeOperation = 'source-over'; // default
+		ctx.globalCompositeOperation = 'source-in';
+        //		ctx.globalCompositeOperation = 'source-out';
+		ctx.globalCompositeOperation = 'lighter';
+        //		ctx.globalCompositeOperation = 'darken';
+        //		ctx.globalCompositeOperation = 'xor';
+        //		ctx.globalCompositeOperation = 'screen';
+
+		// source
+		ctx.beginPath();
+		ctx.arc(350, 150, 150, 0, Math.PI * 2, false);
+		ctx.fillStyle = 'green';
+		ctx.fill();
+	</script>
+</body>
+</html>
+
+
+

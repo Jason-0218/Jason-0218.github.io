@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<h3><a href="https://github.com/latentflip/loupe">https://github.com/latentflip/loupe</a></h3>
+	
+	<script>
+        // time is not the guaranteed time to execution, but a minimum time
+		
+        // asynchronize, use debug to show
+				document.write('print sth after 3 seconds', '<br>');
+
+		// setTimeout(cb, millisecs)
+		// at least 3 secs
+		setTimeout(function() {
+			document.write('printed', '<br>');
+		}, 3000);
+		
+        //
+		function print() {
+			document.write('printed', '<br>');
+		}
+		setTimeout(print,3000);
+		
+		// set a handle
+		i=0
+		interval=setInterval(function(){
+			console.log('i:', i++);
+		},1000);
+		
+		// clearInterval(interval) 
+	</script>
+</body>
+</html>
+
+

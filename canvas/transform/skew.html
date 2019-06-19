@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border: solid 10px blue;
+        }
+
+    </style>
+</head>
+
+<body>
+    <canvas id='canvas' width=700 height=500></canvas>
+    <script>
+        canvas = document.querySelector('#canvas');
+        ctx = canvas.getContext('2d');
+        
+//        ctx.translate(200,100);
+        
+        
+        //
+        ctx.transform(1,0.5,-0.5,1,200,100);
+//        ctx.rotate(45*Math.PI/180);
+        
+        ctx.fillRect(0,0,100,200);
+        
+        /*
+        a	Horizontal scaling	
+        b	Vertical skewing	
+        c	Horizontal skewing	
+        d	Vertical scaling	
+        e	Horizontal moving	
+        f	Vertical moving
+        */
+    </script>
+</body>
+
+</html>

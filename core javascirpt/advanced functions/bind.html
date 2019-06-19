@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+    <script>
+        // bind also set 'this' context for the function
+        // but it doesn't run the function, it returns a new function
+        var book = {
+            title: 'Javascript Awesome',
+            publisher: 'Two Sides'
+        }
+
+        function announce(hi, greeting) {
+            console.log(hi + ' ' + greeting + ' The book "' + this.title + '" is published now by ' + this.publisher);
+        }
+
+        // create a new function with 'book' object as the context 'this'
+        var announceABook = announce.bind(book);
+
+        announceABook("Hi everyone!", "Good morning");
+
+        // so bind method make a function more specific to an object
+        // that means the bind method makes the context for the function is fixed
+    </script>
+
+</body>
+</html>
+
+

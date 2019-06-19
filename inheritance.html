@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <script>
+        // 1 superclass
+        function Animal() {
+            this.color = "any color";
+        }
+
+        Animal.prototype.run = function() {
+            console.log("Animal run");
+        }
+
+        Animal.prototype.canMove = true;
+
+        // 2 subclass
+        function Dog() {
+            this.color = "black";
+        }
+        Dog.prototype = new Animal();
+        Dog.prototype.constructor = Dog;
+
+        // 3 new subclass
+        var dog = new Dog();
+        console.log("dog color is: " + dog.color);
+        console.log("dog canMove:  " + dog.canMove);
+        dog.run();
+        
+        // check type
+        console.log(dog instanceof Dog)
+        console.log(dog instanceof Animal)
+        console.log(dog instanceof Object)
+
+        // algorithm for obj instanceof F
+        // 1. if obj.__proto__==F.prototype
+        // 2. if yes, return true
+        // 3. else, obj=obj.__proto__, return 1. until obj.__proto__==null (proto chain ends)
+    </script>
+</body>
+
+</html>
+
+

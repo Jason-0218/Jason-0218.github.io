@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border: solid 10px blue;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id='canvas' width=700 height=500></canvas>
+    <script>
+        canvas = document.querySelector('#canvas');
+        ctx = canvas.getContext('2d');
+
+        for (var i = 0; i < 7; i++) {
+            ctx.beginPath();
+            if (i % 3 === 0) {
+                ctx.fillStyle = 'red'
+            }
+            if (i % 3 === 1) {
+                ctx.fillStyle = 'blue'
+            }
+            if (i % 3 === 2) {
+                ctx.fillStyle = 'green'
+            }
+            ctx.fillRect(10, 10, 300, 100);
+            ctx.translate(50, 15);
+            ctx.rotate(8 * Math.PI / 180);
+        }
+    </script>
+</body></html>

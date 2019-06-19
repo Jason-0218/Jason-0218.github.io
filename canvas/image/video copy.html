@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../main.css">
+</head>
+
+<body>
+    <img controls src="https://media.giphy.com/media/3DsNP07nApt1eEyjvM/giphy.gif">
+    <br>
+    <canvas></canvas>
+    <script>
+        canvas = document.querySelector('canvas');
+        context = canvas.getContext('2d');
+        video = document.querySelector('img');
+        
+        img.addEventListener('loadedmetadata', function() {
+            console.log('loaded');
+            canvas.width = this.videoWidth;
+            canvas.height = this.videoHeight;
+        });
+
+        var draw = function() {
+            context.drawImage(img, 0, 0);
+            requestAnimationFrame(draw);
+        }
+        
+        video.addEventListener('play', function() {
+            if (video.paused || video.ended) return;
+            draw();
+        });
+    </script>
+</body>
+
+</html>
+
+
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border: solid 10px blue;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id='canvas' width=700 height=500></canvas>
+    <script>
+        canvas = document.querySelector('#canvas');
+        ctx = canvas.getContext('2d');
+
+        function playerRunning(img, width, height) {
+            this.sheet = new Image();
+            this.sheet.src = img;
+
+            this.currColumn = 0;
+            this.currRow = 0;
+            this.getNextIndex = function() {
+                this.currColumn++;
+                if (this.currColumn === 8) {
+                    this.currColumn = 0;
+                    this.currRow++;
+                }
+                if (this.currRow === 7 && this.currColumn === 6) {
+                    this.currColumn = 0;
+                    this.currRow = 0;
+                }
+            };
+
+            this.draw = function() {
+                console.log(this.currRow,this.currColumn);
+                ctx.drawImage(this.sheet, this.currColumn * width, this.currRow * height, width, height, 50, 100, width, height);
+                this.getNextIndex();
+            }
+        }
+        sheet = new playerRunning('./player-running9x81.png', 180, 340);
+        sheet.sheet.onload = function() {
+            sheet.draw();
+        }
+
+        function loop() {
+            setTimeout(function() {
+                requestAnimationFrame(loop);
+                ctx.clearRect(0, 0, 700, 500);
+                sheet.draw();
+            }, 50)
+        }
+        loop();
+    </script>
+</body></html>

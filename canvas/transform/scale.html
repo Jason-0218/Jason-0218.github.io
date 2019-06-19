@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border: solid 10px blue;
+        }
+
+    </style>
+</head>
+
+<body>
+    <canvas id='canvas' width=700 height=500></canvas>
+    <script>
+        canvas = document.querySelector('#canvas');
+        ctx = canvas.getContext('2d');
+        
+        ctx.translate(100,200);
+        ctx.scale(-2,1);
+        //
+        ctx.fillRect(0,0,200,200);
+        ctx.fillStyle = 'blue'
+        ctx.font = '50px Arial';
+        ctx.fillText('Hello',0,100);
+        
+
+    </script>
+</body>
+
+</html>

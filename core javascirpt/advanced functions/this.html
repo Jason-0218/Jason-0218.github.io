@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+    <script>
+        // this refer to a function's context 
+        // it refer to different context depending on where the function is accessed
+
+        (function() {
+            // this refer to global object
+            //    console.log("'this' is global object: "+(this===global));
+            console.log("'this' is 'window' object: " + (this === window));
+
+            var o = {
+                property: 'value',
+                method: function() {
+                    console.log("'this' is the o")
+                    return this.property;
+                }
+            }
+            console.log(o.method());
+
+            window.addEventListener('keydown', function(e) {
+                console.log(this);
+            });
+        }());
+    </script>
+</body>
+</html>
+
+
+j

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border: solid 10px blue;
+        }
+
+    </style>
+</head>
+
+<body>
+    <canvas id='canvas' width=700 height=500></canvas>
+    <script>
+        canvas = document.querySelector('#canvas');
+        ctx = canvas.getContext('2d');
+        
+        ctx.save();
+        
+        ctx.translate(200,200);
+        ctx.rotate(45*Math.PI/180);
+        ctx.fillRect(0,0,100,200);
+        
+//        ctx.restore();
+//        ctx.transform(1,0,0,1,0,0);
+        ctx.resetTransform();
+        ctx.fillRect(0,0,300,200);
+        
+
+    </script>
+</body>
+
+</html>

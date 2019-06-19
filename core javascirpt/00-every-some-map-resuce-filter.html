@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        arr = [1, 2, 3, 4, 5, 6, 7];2a 
+        a.myEvery = function(cb) {
+            for (var i = 0; i < this.length; i++) {
+                if (cb(a[i]) === false) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        r = a.every(function(e) {
+            return e > 0;
+        });
+        document.write('r:', r, '<br>');
+        // some == or
+        r = a.some(function(e) {
+            return e > 7;
+        });
+        document.write('r: ', r, '<br>');
+
+        // map
+        r = a.map(function(e) {
+            return e * 2;
+        });
+        document.write('r: ', r, '<br>');
+                // reduce
+        document.write('a: ', a, '<br>');
+        r = a.reduce(function(e1, e2) {
+            //            document.write('e1," ",e2: ', e1, " ", e2, '<br>');
+            return e1 + e2;
+        }, 100);
+        document.write('r: ', r, '<br>');
+
+        // filter
+        r = a.filter(function(e) {
+            return e >= 4;
+        });
+        document.write('r: ', r, '<br>');
+
+
+
+    </script>
+</body></html>

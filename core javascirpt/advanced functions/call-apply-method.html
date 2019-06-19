@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+    <script>
+        var book = {
+            title: 'Javascript Awesome',
+            publisher: 'Two Sides'
+        }
+
+        function printInfo(name) {
+            console.log('The book wroten by ' + name + ' "' + this.title + '" published now by ' + this.publisher);
+        }
+
+        printInfo.call(book, "Joe", "Baker");
+
+        // apply
+        printInfo.apply(book, ["Joe"]);
+
+        // call() accepts an arguments seperated by comma
+        // apply() accepts a single array of arguments.
+        function announce(hi, greeting) {
+            console.log(hi + ' ' + greeting + ' The book "' + this.title + '" is published now by ' + this.publisher);
+        }
+
+        announce.call(book, 'Hi, everyone!', 'Good morning');
+        announce.apply(book, ['Hi, everyone!', 'Good morning']);
+    </script>
+</body>
+
+</html>
+
+

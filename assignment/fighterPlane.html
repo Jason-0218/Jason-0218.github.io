@@ -1,0 +1,264 @@
+π<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border: solid 10px black;
+        }
+
+        #div {
+            height: 150px;
+            width: 150px;
+            border: solid 5px grey;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id='canvas' width=700 height=700></canvas>
+
+    <input type="text">
+
+    <script>
+        audio1 = new Audio('/canvas/sound/CRASH2.wav')
+        audio2 = new Audio('/canvas/sound/sound_design_effect_descend_futuristic_short%20copy.mp3')
+
+        input = document.querySelector('input');
+        canvas = document.querySelector('#canvas');
+        ctx = canvas.getContext('2d');
+
+        ifChooseHardness = false;
+        score = 0;
+        hardness = null;
+        gameStatus = false;
+
+        //        function preload(){
+        //        sound = loadSound ('')
+        //        }
+        function showScore() {
+            ctx.beginPath();
+            ctx.font = '20px Arial';
+            ctx.fillStyle = 'grey';
+            ctx.fillText('Score: ' + score + ' / ' + (hardness * 35 + 20), 10, 20);
+        }
+
+        function eliminateArray() {
+            for (var i = 0; i = enemies.length; i++) {
+                enemies.pop();
+            }
+            for (var i = 0; i = bullets.length; i++) {
+                bullets.pop();
+            }
+        }
+
+        //
+
+        //
+
+        function Bullet() {
+            this.x = fighterAircraft.x + 10;
+            this.y = fighterAircraft.y - 5;
+            this.w = 5;
+            this.h = 10;
+            this.speed = 5;
+            this.draw = function() {
+                ctx.beginPath();
+                ctx.fillStyle = 'black';
+                ctx.fillRect(this.x, this.y, this.w, this.h);
+                this.y -= this.speed;
+
+            }
+        }
+        //
+        bullets = []
+        //
+        fighterAircraft = {
+            x: 350,
+            y: 650,
+            w: 20,
+            h: 30,
+            left: false,
+            right: false,
+            shoot: false,
+            speed: 5,
+            draw: function() {
+                ctx.beginPath();
+                ctx.fillStyle = 'red';
+                ctx.fillRect(fighterAircraft.x, fighterAircraft.y, fighterAircraft.w, fighterAircraft.h);
+
+            },
+            limit: function() {
+                if (fighterAircraft.x <= 0) {
+                    fighterAircraft.x = 0;
+                }
+                if (fighterAircraft.x >= 700 - fighterAircraft.w) {
+                    fighterAircraft.x = 700 - fighterAircraft.w;
+                }
+            }
+
+        }
+        //
+        enemies = [];
+        //
+        //
+
+        function Enemy() {
+            this.y = Math.random() * -4000;
+            this.w = 20;
+            this.h = 40;
+            this.x = Math.random() * 680;
+            this.yspeed = Math.random() * -0.3 - 0.5;
+            this.xspeed = Math.random() * -3 + 2;
+            this.r = Math.random() * 256;
+            this.g = Math.random() * 256;
+            this.a = Math.random() * 256;
+            this.fall = function() {
+                ctx.beginPath();
+                ctx.fillStyle = 'rgba(' + this.r + ',' + this.g + ',' + this.g + ', 0.6)';
+                ctx.fillRect(this.x, this.y, this.w, this.h);
+                this.x += this.xspeed;
+                this.y -= this.yspeed;
+
+                if (this.x > 700 - this.w || this.x < 0) {
+                    this.xspeed = -this.xspeed;
+                } else if (this.y + 5 >= 600) {
+                    alert('You lost');
+                    gameStatus = false;
+                    ifChooseHardness = false;
+                    score = 0;
+                    eliminateArray();
+                }
+
+            }
+        }
+
+
+        function destory() {
+            for (i = 0; i < bullets.length; i++) {
+                if (bullets[i].x + bullets[i].w > enemies[n].x && bullets[i].x < enemies[n].x + enemies[n].w && bullets[i].y < enemies[n].y + enemies[n].h && bullets[i].y + bullets[i].h > enemies[n].y) {
+                    console.log('collison');
+                    bullets.splice(i, 1);
+                    enemies.splice(n, 1);
+                    var aud = audio1.cloneNode();
+                    aud.play();
+                    score++;
+                }
+            }
+        }
+        //
+        function planeMoveAndShoot() {
+            if (fighterAircraft.left) {
+                fighterAircraft.x -= fighterAircraft.speed;
+            } else if (fighterAircraft.right) {
+                fighterAircraft.x += fighterAircraft.speed;
+            }
+            if (fighterAircraft.shoot){
+                var bullet = new Bullet();
+                bullets.push(bullet);
+            }
+        }
+
+
+        function win() {
+            if (enemies.length == 0 && score >= (hardness * 35 + 20)) {
+                alert('You win!')
+                gamesStatus = false;
+                ifChooseHardness = false;
+                score = 0;
+                eliminateArray();
+            }
+        }
+        window.addEventListener('keydown', function(e) {
+            console.log('keydown');
+            if (e.keyCode == 37) {
+                fighterAircraft.left = true;
+                fighterAircraft.right = false;
+
+            }
+            if (e.keyCode == 39) {
+                fighterAircraft.left = false;
+                fighterAircraft.right = true;
+
+            }
+            if (e.keyCode == 32) {
+                fighterAircraft.shoot = true;
+            }
+
+        })
+        window.addEventListener('keyup', function(e) {
+            if (e.keyCode === 37) {
+                fighterAircraft.left = false;
+            }
+            if (e.keyCode === 39) {
+                fighterAircraft.right = false;
+            }
+            if (e.keyCode === 32) {
+                fighterAircraft.shoot = false;
+            }
+        })
+        //
+        //
+        function loop() {
+            requestAnimationFrame(loop);
+            //
+            //
+            if (gameStatus == true && ifChooseHardness == true) {
+                ctx.clearRect(0, 0, 700, 700);
+
+                showScore();
+
+                ctx.beginPath();
+                ctx.strokeStyle = 'rgba(204, 0, 0, 0.75)';
+                ctx.moveTo(0, 600);
+                ctx.lineTo(700, 600);
+                ctx.lineWidth = 10;
+                ctx.stroke();
+
+                // update positon
+                planeMoveAndShoot();
+                fighterAircraft.draw();
+                fighterAircraft.limit();
+                for (n = 0; n < enemies.length; n++) {
+                    destory();
+                    enemies[n].fall();
+                }
+                for (i = 0; i < bullets.length; i++) {
+                    bullets[i].draw();
+                    if (bullets[i].y <= -5) {
+                        bullets.splice(i, 1);
+                    }
+                }
+                win();
+            } else if (ifChooseHardness == false) {
+
+                hardness = +input.value;
+
+                if (hardness >= 1 && hardness <= 5) {
+                    ifChooseHardness = true;
+                    for (var i = 0; i < hardness * 40 + 20; i++) {
+                        var enemy = new Enemy;
+                        enemies.push(enemy);
+                    }
+                }
+            } else if (gameStatus == false) {
+                canvas.addEventListener('click', function() {
+                    gameStatus = true;
+                })
+
+                ctx.clearRect(0, 0, 700, 700);
+                ctx.beginPath();
+                ctx.font = "50px Arial";
+                ctx.fillStyle = 'black';
+                ctx.fillText("Please click the canvas to ", 50, 300);
+                ctx.fillText("start the game.", 150, 350);
+            }
+
+        };
+        loop();
+    </script>
+
+</body></html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border: solid 10px blue;
+        }
+
+    </style>
+</head>
+
+<body>
+    <canvas id='canvas' width=700 height=500></canvas>
+    <script>
+        canvas = document.querySelector('#canvas');
+        ctx = canvas.getContext('2d');
+        
+
+        
+//        ctx.translate(200,200);
+        ctx.rotate(45*Math.PI/180);
+        ctx.translate(200,200);
+        ctx.fillRect(0,0,200,100);
+    </script>
+</body>
+
+</html>

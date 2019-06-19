@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <iframe src="/canvas/audio/silence.mp3" frameborder="0"></iframe>
+
+<!--    <audio id='audio' controls src="../audio/Level_Complete.mp3"></audio>-->
+</body>
+
+<script>
+    // 1 way by html element
+    //    audio = document.querySelector('#audio');
+    //    audio.play();
+
+    // 2 way by js object
+        audio = new Audio('../audio/Level_Complete.mp3');
+    audio.play();
+
+    // properties
+    //    document.write('audio.src: ', audio.src, '<br>');
+
+    // event
+    //    audio.addEventListener('played', function(e) {
+    //        document.write('Music is playing', '<br>');
+    //    });
+    // event
+    //    audio.addEventListener('loadedmetadata', function() {
+    //        document.write("Playing " + audio.src + ", for " + audio.duration + " seconds.", "<br>");
+    //        audio.play();
+    //    });
+    //    audio.addEventListener('play', function() {
+    //        document.write('playing', '<br>');
+    //    });
+    //    audio.addEventListener('pause', function() {
+    //        document.write('pausing', '<br>');
+    //    });
+    //    audio.addEventListener('timeupdate', function() {
+    //        document.write(this.currentTime + "<br>");
+    //    });
+    //    audio.addEventListener('ended', function() {
+    //        document.write('music ended', '<br>');
+    //    });
+    //    audio.addEventListener('volumechange', function() {
+    //        console.log(audio.volume);
+    //    });
+</script>
+</html>
+
+
+
